@@ -65,3 +65,17 @@ python3 style_transfer.py examples/style-002.jpg examples/content-001.jpg
 - 引导图像：用于引导生成的方向或风格。
 
 生成的图像将保存在脚本运行目录下，文件名为 result-YYYYMMDDTHHMMSSZ.jpg，其中时间戳为 UTC 时间。
+
+原始图像
+
+![Origin](./examples/content-001.jpg)
+
+风格图像
+
+![Stylke](./examples/style-002.jpg)
+
+生成图像
+
+![Result1](./docs/result-20250204T035031Z.jpg)
+![Result2](./docs/result-20250204T035045Z.jpg)
+![Result3](./docs/result-20250204T035101Z.jpg)
