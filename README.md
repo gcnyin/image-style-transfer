@@ -1,80 +1,76 @@
-# Image style transfer tool
+# Image Style Transfer Tool 图像风格迁移工具
 
-This script is based on StableDiffusionImg2ImgPipeline and IPAdapter, used for generating new images through image-to-image generation, combining the functions of IP-Adapter. Users can specify input and guidance images, adjust generation strength and other parameters to generate output images with different styles or features.
+## Overview 概述
 
-## Dependency environment
+This project implements an image style transfer tool using the IP-Adapter with Stable Diffusion. It allows users to generate stylized images by providing a base image and a guiding image. 本项目使用 IP-Adapter 和 Stable Diffusion 实现了一个图像风格迁移工具。用户可以通过提供基础图像和引导图像来生成风格化图像。
 
-- Python 3.12
-- PyTorch (Recommended to use a GPU environment with CUDA support, you can also use a CPU or MPS environment for M1 chips)
-- ip_adapter library (to be installed via `install.sh`)
+## System Requirements 系统要求
 
-How to use
+- **Python 3.12**
+- CUDA (recommended for faster inference) 推荐使用 CUDA 以获得更快的推理速度
+- (Optional) Apple M1 也可以使用Apple M1芯片
 
-Install dependencies
+## Installation 安装
 
-```bash
+Clone the repository 克隆代码仓库：
+
+```shell
+git clone https://github.com/gcnyin/image-style-transfer.git
+```
+
+Install dependencies 安装依赖：
+
+```shell
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
+```
+
+Download the IP-Adapter model. Run the install.sh script. 下载 IP-Adapter 模型，执行 install.sh 脚本：
+
+```shell
 ./install.sh
 ```
 
-Run the script
+Note: If the download fails, ensure you have a stable internet connection and retry. 注意：如果下载失败，请确保网络连接稳定并重试。
+
+## Usage 使用
+
+Run the script with the following command 使用以下命令运行脚本：
 
 ```shell
-python3 style_transfer.py examples/style-002.jpg examples/content-001.jpg
+python style_transfer.py -c <content_image_path> -s <style_image_path>
 ```
 
-Parameter description
-
-Input image: The base image for generation.
-Guiding image: Used to guide the direction or style of generation.
-
-The generated image will be saved in the directory where the script is running, with the file name as result-YYYYMMDDTHHMMSSZ.jpg, where the timestamp is in UTC time.
-
-# 图像风格迁移工具
-
-本脚本基于 StableDiffusionImg2ImgPipeline 和 IPAdapter，用于通过图像到图像的生成方式，结合 IP-Adapter 的功能，生成新的图像。用户可以通过指定输入图像和引导图像，调整生成强度等参数，生成具有不同风格或特征的输出图像。
-
-## 依赖环境
-
-- Python 3.12
-- PyTorch（建议使用 CUDA 支持的 GPU 环境，也可使用 CPU 或 M1 芯片的 MPS 环境）
-- ip_adapter 库（需通过`install.sh`安装）
-
-## 使用方法
-
-### 安装依赖
+## Example 示例
 
 ```bash
-python3 -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
-./install.sh
+python style_transfer.py -c input.jpg -s style.jpg
 ```
 
-### 运行脚本
+The generated images will be saved in the current directory with filenames like result-timestamp.jpg. 生成的图像将保存在当前目录中，文件名格式为 result-<时间戳>.jpg。
 
-```shell
-python3 style_transfer.py examples/style-002.jpg examples/content-001.jpg
-```
+## License 许可证
 
-参数说明
+This project is licensed under the MIT License. See the LICENSE file for details. 本项目采用 MIT 许可证。详情请参见 LICENSE 文件。
 
-- 输入图像：作为生成的基础图像。
-- 引导图像：用于引导生成的方向或风格。
+## Acknowledgments 致谢
 
-生成的图像将保存在脚本运行目录下，文件名为 result-YYYYMMDDTHHMMSSZ.jpg，其中时间戳为 UTC 时间。
+- [Stable Diffusion](https://github.com/Stability-AI/stablediffusion)
+- [transformers](https://github.com/huggingface/transformers)
+- [IP-Adapter](https://github.com/tencent-ailab/IP-Adapter/)
 
-原始图像
+## 成果展示
+
+Original Image 原始图像
 
 ![Origin](./examples/content-001.jpg)
 
-风格图像
+Style Image 风格图像
 
 ![Stylke](./examples/style-002.jpg)
 
-生成图像
+Generated Image 生成图像
 
 ![Result1](./docs/result-20250204T035031Z.jpg)
 ![Result2](./docs/result-20250204T035045Z.jpg)
