@@ -53,5 +53,13 @@ def main():
     for i in images:
         i.save(f"result-{datetime.datetime.now(datetime.UTC).strftime("%Y%m%dT%H%M%SZ")}.jpg")
 
+    images = ip_model.generate(pil_image=image, num_samples=1, num_inference_steps=50, seed=42, image=g_image, strength=0.6)
+    for i in images:
+        i.save(f"result-{datetime.datetime.now(datetime.UTC).strftime("%Y%m%dT%H%M%SZ")}.jpg")
+
+    images = ip_model.generate(pil_image=image, num_samples=1, num_inference_steps=50, seed=42, image=g_image, strength=0.7)
+    for i in images:
+        i.save(f"result-{datetime.datetime.now(datetime.UTC).strftime("%Y%m%dT%H%M%SZ")}.jpg")
+
 if __name__ == '__main__':
     main()
