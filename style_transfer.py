@@ -38,8 +38,8 @@ def main():
         torch_dtype=torch.float16,
         scheduler=noise_scheduler,
         # vae=vae,
-        feature_extractor=None,
-        safety_checker=None
+        # feature_extractor=None,
+        # safety_checker=None
     )
 
     # load ip-adapter
@@ -55,7 +55,7 @@ def main():
 
     images = ip_model.generate(pil_image=image, num_samples=1, num_inference_steps=50, seed=42, image=g_image, strength=0.5)
     for i in images:
-        i.save(f"result-{datetime.datetime.now(datetime.UTC).strftime("%Y%m%dT%H%M%SZ")}.jpg")
+        i.save(f"result-{datetime.datetime.now(datetime.UTC).strftime("%Y%m%dT%H%M%SZ")}-05.jpg")
 
     # images = ip_model.generate(pil_image=image, num_samples=1, num_inference_steps=50, seed=42, image=g_image, strength=0.6)
     # for i in images:
