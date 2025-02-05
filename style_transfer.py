@@ -38,8 +38,8 @@ def main():
         torch_dtype=torch.float16,
         scheduler=noise_scheduler,
         # vae=vae,
-        # feature_extractor=None,
-        # safety_checker=None
+        feature_extractor=None,
+        safety_checker=None
     )
 
     # load ip-adapter
